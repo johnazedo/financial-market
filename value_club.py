@@ -21,28 +21,11 @@ for paper in udf.index:
     if paper not in exclude:
         availables.append(paper)
 
-print(availables)
-
 udf = udf.filter(items = availables, axis = 0)
 
-# %% Create a global ranking
+# %% 
 evebit_ranking = udf.sort_values('EV/EBIT').index
-roe_ranking = udf.sort_values('ROE', ascending=[False]).index
-
-global_ranking = {}
-
-for i in range(len(evebit_ranking)):
-    global_ranking[evebit_ranking[i]] = i
-        
-for i in range(len(roe_ranking)):
-    global_ranking[roe_ranking[i]] += i
-
-result = sorted(global_ranking.items(), key=lambda x:x[1])
-
-
-# %% Show data
 counter = 1
-for paper, ranking in result:
-    print("#{counter}: {paper} -> {ranking}".format(counter=counter, paper=paper, ranking=ranking))
+for i in range(len(evebit_ranking)):
+    print("#{counter}: {paper} -> {ranking}".format(counter=counter, paper=evebit_ranking[i], ranking=counter))
     counter+=1
-    
