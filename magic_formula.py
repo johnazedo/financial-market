@@ -13,15 +13,13 @@ udf = udf[ udf['Mrg Ebit'] > 0 ]
 # %% Remove finance and insurers
 fin = fundamentus.list_papel_setor(35)
 seg = fundamentus.list_papel_setor(38)
-exclude = ['PSSA3', 'PSSA4', 'ITSA3', 'ITSA4', 'ITUB3', 
+exclude = ['PSSA3', 'PSSA4', 'ITSA3', 'ITSA4', 'ITUB3', 'QUAL3',
            'ITUB4', 'CXSE3', 'BBAS3', 'BBDC4', 'BBDC3', 'BBSE3'] + fin + seg
 availables = []
 
 for paper in udf.index:
     if paper not in exclude:
         availables.append(paper)
-
-print(availables)
 
 udf = udf.filter(items = availables, axis = 0)
 
@@ -45,4 +43,3 @@ counter = 1
 for paper, ranking in result:
     print("#{counter}: {paper} -> {ranking}".format(counter=counter, paper=paper, ranking=ranking))
     counter+=1
-    
