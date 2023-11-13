@@ -43,3 +43,5 @@ counter = 1
 for paper, ranking in result:
     print("#{counter}: {paper} -> {ranking}".format(counter=counter, paper=paper, ranking=ranking))
     counter+=1
+
+# %%
