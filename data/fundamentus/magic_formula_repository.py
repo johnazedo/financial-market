@@ -1,4 +1,4 @@
-from core.stonk_market_data import Ranking, RankingRepository
+from core.ranking_repository import Ranking, RankingRepository
 import fundamentus
 
 class MagicFormulaRepository(RankingRepository):
