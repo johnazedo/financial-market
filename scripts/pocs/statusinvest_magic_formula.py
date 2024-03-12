@@ -2,15 +2,15 @@
 # %%
 import pandas as pd
 
-df = pd.read_csv("statusinvest.csv", delimiter=";", decimal=",", thousands=".", index_col="TICKER")
+df = pd.read_csv("../../data/statusinvest.csv", delimiter=";", decimal=",", thousands=".", index_col="TICKER")
 
 # %%
 # Filter
 udf = df[df[' LIQUIDEZ MEDIA DIARIA'].fillna(0) > 1000000]
 udf = udf[udf['MARGEM EBIT'].fillna(0) > 0 ]
 
-fin = pd.read_csv("statusinvest_financas.csv", delimiter=";")
-exclude = fin.index
+fin = pd.read_csv("../../data/statusinvest_financas.csv", delimiter=";")
+exclude = fin.loc[:, 'TICKER']
 
 udf = udf[~udf.index.isin(exclude)]
 

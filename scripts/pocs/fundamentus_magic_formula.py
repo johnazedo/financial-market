@@ -11,17 +11,10 @@ udf = df[ df['Liq.2meses'] > 1000000]
 udf = udf[ udf['Mrg Ebit'] > 0 ]
 
 # %% Remove finance and insurers
-fin = fundamentus.list_papel_setor(35)
-seg = fundamentus.list_papel_setor(38)
-exclude = ['PSSA3', 'PSSA4', 'ITSA3', 'ITSA4', 'ITUB3', 'QUAL3',
-           'ITUB4', 'CXSE3', 'BBAS3', 'BBDC4', 'BBDC3', 'BBSE3'] + fin + seg
-availables = []
+fin = pd.read_csv("../../data/statusinvest_financas.csv", delimiter=";")
+exclude = fin.loc[:, 'TICKER']
 
-for paper in udf.index:
-    if paper not in exclude:
-        availables.append(paper)
-
-udf = udf.filter(items = availables, axis = 0)
+udf = udf[~udf.index.isin(exclude)]
 
 # %% Create a global ranking
 evebit_ranking = udf.sort_values('EV/EBIT').index
