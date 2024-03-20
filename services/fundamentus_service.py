@@ -1,7 +1,7 @@
-from core.data_repository import DataRepository
+from core.data_service import DataService
 
 
-class FundamentusDataRepository(DataRepository):
+class FundamentusDataService(DataService):
     
     def __init__(self):
         self._df = fundamentus.get_resultado_raw()

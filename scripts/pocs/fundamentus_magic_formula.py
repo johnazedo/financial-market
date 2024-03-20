@@ -11,6 +11,8 @@ udf = df[ df['Liq.2meses'] > 1000000]
 udf = udf[ udf['Mrg Ebit'] > 0 ]
 
 # %% Remove finance and insurers
+import pandas as pd
+
 fin = pd.read_csv("../../data/statusinvest_financas.csv", delimiter=";")
 exclude = fin.loc[:, 'TICKER']
 

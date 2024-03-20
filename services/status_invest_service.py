@@ -1,8 +1,8 @@
 import pandas as pd
-from core.data_repository import DataRepository
+from core.data_service import DataService
 
 
-class StatusInvestDataRepository(DataRepository):
+class StatusInvestDataService(DataService):
 
     def __init__(self):
         self._df = pd.read_csv("../../data/statusinvest.csv", delimiter=";", decimal=",", thousands=".", index_col="TICKER")
