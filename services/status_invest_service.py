@@ -1,5 +1,5 @@
 import pandas as pd
-from core.data_service import DataService
+from data_service import DataService
 
 
 class StatusInvestDataService(DataService):

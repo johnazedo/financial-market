@@ -1,4 +1,5 @@
-from core.data_service import DataService
+from data_service import DataService
+import fundamentus
 
 
 class FundamentusDataService(DataService):
