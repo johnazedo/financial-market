@@ -1,10 +1,13 @@
 import pandas as pd
-from data_service import DataService
+from services.data_service import DataService, SanitizationDataService
+from config.constants import STATUS_INVEST_CSV_PATH
 
+class StatusInvestDataService(DataService, SanitizationDataService):
 
-class StatusInvestDataService(DataService):
-
-    def __init__(self):
-        self._df = pd.read_csv("../../data/statusinvest.csv", delimiter=";", decimal=",", thousands=".", index_col="TICKER")
-        self._filter_data(' LIQUIDEZ MEDIA DIARIA', 'MARGEM EBIT')
-        self._remove_finance_and_insurers()
+    def get_data_frame(self) -> pd.DataFrame:
+        df = pd.read_csv(STATUS_INVEST_CSV_PATH, delimiter=";", decimal=",", thousands=".", index_col="TICKER")
+        df = self.filter_data(df, ' LIQUIDEZ MEDIA DIARIA', 'MARGEM EBIT')
+        df = self.remove_finance_and_insurers(df)
+        return df
+    
+    
