@@ -7,8 +7,8 @@ df.columns
 # %% 
 # Remove companies with liquid margin bigger than R$ 200000
 # Remove companies with ebit margin less or equal zero
-udf = df[ df['Liq.2meses'] > 1000000]
-udf = udf[ udf['Mrg Ebit'] > 0 ]
+udf = df[ df['Liq.2meses'].fillna(0) > 1000000]
+udf = udf[ udf['Mrg Ebit'].fillna(0) > 0 ]
 
 # %% Remove finance and insurers
 import pandas as pd

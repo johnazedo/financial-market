@@ -9,7 +9,7 @@ def get_magic_formula() -> MagicFormula:
 
 def start():
     magic_formula = get_magic_formula()
-    result = magic_formula.invoke()
+    result = magic_formula.invoke("FUNDAMENTUS")
     result = sorted(result.items(), key=lambda x: x[1])
 
     for i in range(len(result)):
