@@ -32,7 +32,6 @@ for i in range(len(roe_ranking)):
 
 result = sorted(global_ranking.items(), key=lambda x:x[1])
 
-
 # %% Show data
 counter = 1
 for paper, ranking in result:

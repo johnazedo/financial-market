@@ -7,6 +7,22 @@ class DataService(ABC):
     @abstractmethod
     def get_data_frame(self) -> pd.DataFrame:
         raise NotImplementedError
+    
+    @abstractmethod
+    def get_liquidity_label(self) -> str:
+        raise NotImplementedError
+    
+    @abstractmethod
+    def get_price_label(self) -> str:
+        raise NotImplementedError
+    
+    @abstractmethod
+    def get_ev_ebit_label(self) -> str:
+        raise NotImplementedError
+    
+    @abstractmethod
+    def get_roe_label(self) -> str:
+        raise NotImplementedError
 
 
 class SanitizationDataService():

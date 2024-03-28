@@ -11,15 +11,7 @@ class MagicFormula():
     # TODO: Create a database repository for this usecase
 
     def invoke(self, source: str) -> List[str]:
-        evebit_ranking = self.ranking_repository.get_ev_ebit_ranking_by_source(source)
-        roe_ranking = self.ranking_repository.get_roe_ranking_by_source(source)
-        
-        for i in range(self.ranking_repository.get_number_of_companies(source)):
-            evebit_ticket = evebit_ranking[i]
-            roe_ticket = roe_ranking[i]
-            self._calc_position(evebit_ticket, i)
-            self._calc_position(roe_ticket, i)
-            
+        tickets = self.ranking_repository.get_tickets(source)
         return self.result
 
     def _calc_position(self, ticket: str, position: int) -> None:

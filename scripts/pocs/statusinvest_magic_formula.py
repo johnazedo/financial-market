@@ -3,6 +3,7 @@
 import pandas as pd
 
 df = pd.read_csv("../../data/statusinvest.csv", delimiter=";", decimal=",", thousands=".", index_col="TICKER")
+df.columns
 
 # %%
 # Filter
