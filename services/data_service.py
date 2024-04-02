@@ -17,6 +17,10 @@ class DataService(ABC):
         raise NotImplementedError
     
     @abstractmethod
+    def get_mrg_ebit_label(self) -> str:
+        raise NotImplementedError
+    
+    @abstractmethod
     def get_ev_ebit_label(self) -> str:
         raise NotImplementedError
     
@@ -30,7 +34,7 @@ class SanitizationDataService():
         # Only companies with liquidity greater than 1 million
         df = df[df[liquidity_label].fillna(0) > 1000000]
         # Only companies with positive ebit
-        df = df[df[ebit_label].fillna(0) > 0 ]
+        df = df[df[ebit_label].fillna(0) >= 0 ]
         return df
 
     def remove_finance_and_insurers(self, df: pd.DataFrame) -> pd.DataFrame:

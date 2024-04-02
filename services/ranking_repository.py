@@ -12,7 +12,7 @@ class RankingRepositoryImpl(RankingRepository):
         service = self.services[source]
 
         ev_ebit = service.get_data_frame().sort_values('EV/EBIT')
-        roe = service.get_data_frame().sort_values('ROE', ascending=[False])
+        roe = service.get_data_frame().sort_values('ROIC', ascending=[False])
 
         pos = 1
         for index, row in ev_ebit.iterrows():
