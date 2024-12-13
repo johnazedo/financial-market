@@ -32,10 +32,20 @@ class FinancialFilter(AbstractHandler):
 class SortByEvebitHandler(AbstractHandler):
     
     def execute(self, dto: FinancialDTO) -> FinancialDTO:
-        dto.df.sort_values(EVEBIT_COLUMN).index
+        evebit_index = dto.df.sort_values(EVEBIT_COLUMN).index
+
+        for i, code in enumerate(evebit_index):
+            dto.evebit_ranking.add_item(i, code)
+
         return super().execute(dto)
 
 
-class SortByRoeHandler(AbstractHandler):
-    pass
+class SortByRoicHandler(AbstractHandler):
+    
+    def execute(self, dto):
+        roic_index = dto.df.sort_values(ROIC_COLUMN).index
 
+        for i, code in enumerate(roic_index):
+            dto.roic_ranking.add_item(i, code)
+
+        return super().execute(dto)

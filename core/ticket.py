@@ -12,20 +12,5 @@ class Ticket():
         return self.roe_position + self.evebit_position
 
 
-class Ranking():
-
-    class _RankingItem():
-        def __init__(self, code: str, position: int) -> None:
-            self.code = code
-            self.position = position
-
-    def __init__(self) -> None:
-        self._store: List[self._RankingItem] = None
-    
-    def add_item(self, code: str, position: int) -> None:
-        item = self._RankingItem(code=code, position=position)
-        self._store.append(item)
-
-
-
-    
+class MagicFormula():
+    pass
