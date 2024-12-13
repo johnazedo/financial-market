@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from filters.dto import FinancialDTO
+from services.dto import FinancialDTO
 
 
 # Interface for a Chain of Responsability design pattern
@@ -9,7 +9,7 @@ class Handler(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def set_next(self, handler: Handler) -> Handler: # type: ignore
+    def set_next(self, handler: "Handler") -> "Handler":
         pass
 
 
@@ -24,7 +24,7 @@ class AbstractHandler(Handler):
     @abstractmethod
     def execute(self, dto: FinancialDTO) -> FinancialDTO:
         if self._next_handler:
-            return self._next_handler.execute()
+            return self._next_handler.execute(dto)
 
         return dto
 

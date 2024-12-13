@@ -6,11 +6,10 @@ from typing import List, Callable
 class FinancialDTO():
 
     def __init__(self) -> None:
-        super.__init__()
         file_path = get_file_path(STATUS_INVEST_CSV_FILENAME)
         self.df = pd.read_csv(file_path, delimiter=DELIMITER, decimal=DECIMAL, thousands=THOUSANDS, index_col=INDEX_COL)
-        self.roic_ranking: Ranking = []
-        self.evebit_ranking: Ranking = []
+        self.roic_ranking = Ranking()
+        self.evebit_ranking = Ranking()
 
 
 class Ranking():
@@ -18,10 +17,10 @@ class Ranking():
     class _RankingItem():
         def __init__(self, code: str, position: int) -> None:
             self.code = code
-            self.position = position
+            self.position: int = position
 
     def __init__(self) -> None:
-        self._store: List[self._RankingItem] = None
+        self._store: List[self._RankingItem] = []
     
     def add_item(self, code: str, position: int) -> None:
         item = self._RankingItem(code=code, position=position)

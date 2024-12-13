@@ -1,10 +1,10 @@
-from filters.dto import FinancialDTO
-from filters.handlers import *
+from services.dto import FinancialDTO
+from services.handlers import *
 
 class ProcessAndFilterDataService():
 
     def __init__(self):
-        self._dto = FinancialDTO
+        self._dto = FinancialDTO()
         self._process: AbstractHandler = None
 
         liquid_filter = LiquidMarginFilter()
